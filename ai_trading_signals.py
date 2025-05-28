@@ -30,13 +30,13 @@ def analyze_and_send():
         if price:
             prediction, prob = predict_trade([price])
             if prediction == 1 and prob > 0.7:
-    signal = (
-    "Segnale AI - " + datetime.now().strftime('%Y-%m-%d %H:%M:%S') + "\\n"
-    + f"{name}: LONG @ {price}\\n"
-    + f"Take Profit: {round(price * 1.01, 4)}\\n"
-    + f"Stop Loss: {round(price * 0.995, 4)}\\n"
-    + f"Probabilità stimata: {round(prob * 100, 2)}%"
-)
+                signal = (
+                    "Segnale AI - " + datetime.now().strftime('%Y-%m-%d %H:%M:%S') + "\n"
+                    + f"{name}: LONG @ {price}\n"
+                    + f"Take Profit: {round(price * 1.01, 4)}\n"
+                    + f"Stop Loss: {round(price * 0.995, 4)}\n"
+                    + f"Probabilità stimata: {round(prob * 100, 2)}%"
+                )
                 send_email(f"AI Trading Signal: {name}", signal)
                 print(signal)
 
